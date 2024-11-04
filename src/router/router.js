@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { ref, computed } from 'vue';
 import HomePage from '@/views/HomePage.vue';
+import CatPage from '@/views/CatPage.vue';
 import NotFound from '@/components/NotFound.vue';
 
 const routes = [
@@ -8,6 +9,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: HomePage,
+  },
+  {
+    path: '/cat',
+    name: 'Cat',
+    component: CatPage,
   },
   {
     path: '/:catchAll(.*)',

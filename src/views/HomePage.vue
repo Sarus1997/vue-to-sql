@@ -3,15 +3,16 @@
     <v-row align="center" justify="center" class="fill-height">
       <v-col cols="12" md="8" class="text-center">
         <v-card elevation="8" class="pa-8 mt-5 rounded-lg">
-          <v-card-title class="text-h3 mb-4" style="font-weight: bold;">
+          <v-card-title class="text-h5">
             Data from SQL
           </v-card-title>
           <v-card-text>
-            <ul>
+            <ul class="data-list">
               <li v-for="item in data" :key="item.id" class="text-h6">{{ item.name }}</li>
             </ul>
             <br>
-            <v-btn color="primary" class="back-to-home" href="#/story">หน้าถัดไป</v-btn>
+            <v-btn color="primary" class="back-to-home" href="#/cat">หน้าถัดไป</v-btn>
+            <v-btn color="primary" class="back-to-home" href="#/story">ffff</v-btn>
           </v-card-text>
         </v-card>
       </v-col>
@@ -27,7 +28,7 @@ const data = ref([]);
 
 const fetchData = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/data');  // เรียก API
+    const response = await axios.get('http://localhost:3000/api/data');
     data.value = response.data;
   } catch (error) {
     console.error(error);
@@ -39,10 +40,18 @@ onMounted(fetchData);
 
 <style scoped>
 .fill-height {
-  max-width: auto;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
+}
+
+.data-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.data-list li {
+  margin: 0.5rem 0;
 }
 
 .back-to-home {
@@ -51,12 +60,14 @@ onMounted(fetchData);
 }
 
 @media screen and (max-width: 768px) {
-  .fill-height {
-    padding: 1rem;
-  }
 
   .back-to-home {
     font-size: 16px;
   }
+
+  .data-list li {
+    font-size: 16px;
+  }
+
 }
 </style>
